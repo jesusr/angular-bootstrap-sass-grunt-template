@@ -1,0 +1,23 @@
+{
+  "name": "frae-maps",
+  "version": "0.0.0",
+  "homepage": "https://github.com/javisr/angular-bootstrap-sass-grunt-template",
+  "authors": [
+    "javi@javisr.net"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "*",
+    "bootstrap-sass": "*",
+    "font-awesome": "*",
+    "jquery": "*",
+    "javascript-detect-element-resize": "~0.5.3"
+  }
+}
+
