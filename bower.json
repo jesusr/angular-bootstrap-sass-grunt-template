@@ -16,8 +16,7 @@
     "angular": "*",
     "bootstrap-sass": "*",
     "font-awesome": "*",
-    "jquery": "*",
-    "javascript-detect-element-resize": "~0.5.3"
+    "jquery": "*"
   }
 }
 
