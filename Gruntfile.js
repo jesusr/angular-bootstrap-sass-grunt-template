@@ -220,11 +220,16 @@ module.exports = function(grunt) {
           'bootstrap-css': 'jquery'
         }
       }
+    },
+    nodemon: {
+      dev: {}
     }
   });
 
   // ----- PLUGINS ------
+  grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  // grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-version');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-sass-globbing');
@@ -244,6 +249,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('distjs', ['jshint', 'jscs', 'ngtemplates', 'concat', 'ngAnnotate', 'uglify', 'copy:index']);
   grunt.registerTask('distcss', ['sass_globbing:main', 'sass', 'cssmin', 'copy:index']);
+  grunt.registerTask('watcher', ['nodemon', 'watch']);
   grunt.registerTask('dist', 'Task to create a distribution release.', [
     'clean:build', 'version', 'bower_install', 'distcss', 'distjs', 'copy', 'bower_concat'
   ]);
