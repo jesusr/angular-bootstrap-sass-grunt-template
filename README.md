@@ -21,7 +21,7 @@ $ npm install
 ```
 Run grunt and grunt watch
 ```sh
-$ grunt && grunt watch 
+$ grunt && grunt watcher 
 ```
 License
 ----

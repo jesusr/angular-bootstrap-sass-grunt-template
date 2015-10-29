@@ -6,14 +6,15 @@
     "type": "git",
     "url": "https://github.com/javisr/angular-bootstrap-sass-grunt-template"
   },
+  "main": "server.js",
   "devDependencies": {
     "angular": "1.4.4",
-    "bower": "^1.6.5",
     "grunt": "^0.4.5",
     "grunt-angular-annotator": "*",
     "grunt-angular-templates": "*",
     "grunt-bower-concat": "^0.5.0",
     "grunt-bower-install-task": "0.0.4",
+    "grunt-concurrent": "^2.0.4",
     "grunt-contrib-clean": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-copy": "^0.8.0",
@@ -23,6 +24,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jscs": "*",
     "grunt-ng-annotate": "*",
+    "grunt-nodemon": "^0.4.0",
     "grunt-notify": "*",
     "grunt-sass": "*",
     "grunt-sass-globbing": "*",
@@ -30,6 +32,9 @@
     "jscs-html-reporter": "*",
     "jshint-html-reporter": "*",
     "socket.io-client": "*"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
   }
 }
-
