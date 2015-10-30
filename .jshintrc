@@ -76,7 +76,7 @@
   "jquery": false, // jQuery
   "mocha": false, // Mocha
   "mootools": false, // MooTools
-  "node": false, // Node.js
+  "node": true, // Node.js
   "nonstandard": false, // Widely adopted globals (escape, unescape, etc)
   "phantom": false, // PhantomJS
   "prototypejs": false, // Prototype and Scriptaculous
@@ -90,17 +90,8 @@
 
   // Custom Globals
   "globals": {
-    "google": true,
     "module": true,
-    "require": true,
-    "angular": true,
-    "turf": true,
-    "rbush": true,
-    "knn": true,
-    "io": true,
-    "RichMarkerFactory": true,
-    "MarkerClusterer": true,
-    "InfoBubble": true
+    "require": true
   } // additional predefined global variables
 }
 

@@ -31,10 +31,12 @@
     "grunt-version": "^1.0.0",
     "jscs-html-reporter": "*",
     "jshint-html-reporter": "*",
-    "socket.io-client": "*"
+    "socket.io-client": "*",
+    "grunt-concurrent": "^2.0.4"
   },
   "dependencies": {
     "body-parser": "^1.14.1",
-    "express": "^4.13.3"
+    "express": "~^4.13.3"
   }
 }
+
