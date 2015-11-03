@@ -28,15 +28,16 @@
     "grunt-notify": "*",
     "grunt-sass": "*",
     "grunt-sass-globbing": "*",
+    "grunt-shell-spawn": "^0.3.10",
     "grunt-version": "^1.0.0",
     "jscs-html-reporter": "*",
     "jshint-html-reporter": "*",
-    "socket.io-client": "*",
-    "grunt-concurrent": "^2.0.4"
+    "socket.io-client": "*"
   },
   "dependencies": {
     "body-parser": "^1.14.1",
-    "express": "~^4.13.3"
+    "express": "~^4.13.3",
+    "md5": "^2.0.0",
+    "node-md5": "0.0.1"
   }
 }
-

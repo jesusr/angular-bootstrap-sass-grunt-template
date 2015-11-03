@@ -219,9 +219,20 @@ module.exports = function(grunt) {
         script: './server.js'
       }
     },
+    shell: {
+      mongodb: {
+        command: 'mongod --port 27012',
+        options: {
+          async: false,
+          stdout: false,
+          stderr: true,
+          failOnError: true
+        }
+      }
+    },
     concurrent: {
       dev: {
-        tasks: ['nodemon', 'watch'],
+        tasks: ['shell:mongodb', 'nodemon', 'watch'],
         options: {
           logConcurrentOutput: true
         }
@@ -230,6 +241,7 @@ module.exports = function(grunt) {
   });
 
   // ----- PLUGINS ------
+  grunt.loadNpmTasks('grunt-shell-spawn');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-concurrent');

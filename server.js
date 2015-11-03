@@ -4,8 +4,9 @@
     app = express(),
     bodyParser = require('body-parser'),
     api = require('./api/api.router.js'),
-    port = process.env.PORT || 4443;
-
+    port = process.env.PORT || 4443,
+    mongoose = require('mongoose');
+  mongoose.connect('mongodb://localhost:27012/base');
   app.use(bodyParser.urlencoded({
     extended: true
   }));
@@ -18,7 +19,7 @@
   app.use('/api/*', api);
 
   app.get('*', function(req, res) {
-    res.sendfile('./dist/index.html');
+    res.sendFile(__dirname + '/dist/index.html');
   });
 
   app.listen(port);
