@@ -1,11 +1,10 @@
 module.exports = function(grunt) {
   'use strict';
-  // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     clean: {
       build: ['tmp', 'dist'],
-      bower: ['bower_components']
+      bower: ['src/bower_componentss']
     },
     version: {
       options: {
@@ -118,21 +117,15 @@ module.exports = function(grunt) {
         expand: true
       },
       fontAwesome: {
-        cwd: 'bower_components/font-awesome/fonts/',
+        cwd: 'src/bower_componentss/font-awesome/fonts/',
         src: '**',
         dest: 'dist/fonts',
         expand: true
       },
       bootstrapFonts: {
-        cwd: 'bower_components/bootstrap-css/fonts/',
+        cwd: 'src/bower_componentss/bootstrap-css/fonts/',
         src: '**',
         dest: 'dist/fonts',
-        expand: true
-      },
-      data: {
-        cwd: 'src/',
-        src: 'data/**',
-        dest: 'dist',
         expand: true
       },
       index: {
@@ -146,7 +139,7 @@ module.exports = function(grunt) {
       options: {
         reporter: require('jshint-html-reporter'),
         reporterOutput: 'check-style/jshint-report.html',
-        jshintrc: '.jshintrc'
+        jshintrc: './src/.jshintrc'
       },
       all: ['Gruntfile.js', 'src/app/*.js', 'src/app/**/*.js']
     },
@@ -222,14 +215,24 @@ module.exports = function(grunt) {
       }
     },
     nodemon: {
-      dev: {}
+      dev: {
+        script: './server.js'
+      }
+    },
+    concurrent: {
+      dev: {
+        tasks: ['nodemon', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
     }
   });
 
   // ----- PLUGINS ------
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  // grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-version');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-sass-globbing');
@@ -249,7 +252,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('distjs', ['jshint', 'jscs', 'ngtemplates', 'concat', 'ngAnnotate', 'uglify', 'copy:index']);
   grunt.registerTask('distcss', ['sass_globbing:main', 'sass', 'cssmin', 'copy:index']);
-  grunt.registerTask('watcher', ['nodemon', 'watch']);
+  grunt.registerTask('dev', ['dist', 'concurrent:dev']);
   grunt.registerTask('dist', 'Task to create a distribution release.', [
     'clean:build', 'version', 'bower_install', 'distcss', 'distjs', 'copy', 'bower_concat'
   ]);
