@@ -1,21 +1,24 @@
-var express = require('express'),
+(function() {
+  'use strict';
+  var express = require('express'),
     app = express(),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    api = require('./api/api.router.js'),
+    port = process.env.PORT || 4443;
 
-app.use(bodyParser.urlencoded({
+  app.use(bodyParser.urlencoded({
     extended: true
-}));
-app.use(bodyParser.json());
+  }));
+  app.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/dist'));
-var port = process.env.PORT || 4443;
+  app.use(express.static(__dirname + '/dist'));
+  app.use('/api', api);
+  app.use('/api/*', api);
 
-var api = require('./api/api.router.js');
-app.use('/api', api);
-app.use('/api/*', api);
-
-app.get('*', function(req, res) {
+  app.get('*', function(req, res) {
     res.sendFile(__dirname + '/dist/index.html');
-});
+  });
 
-app.listen(port);
+  app.listen(port);
+  console.log('Listening at ' + port);
+})();
